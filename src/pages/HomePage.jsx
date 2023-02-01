@@ -1,6 +1,13 @@
+import Slide from "../components/Slider/Slide/Slide";
+import Slider from "../components/Slider/Slider";
+
 const HomePage = () => {
     return (
-        <h1>Home</h1>
+        <>
+            <Slider>
+                <Slide />
+            </Slider>
+        </>
     )
 }
 
