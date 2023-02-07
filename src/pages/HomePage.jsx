@@ -20,9 +20,8 @@ const HomePage = () => {
 
     return (
         <>
-            <Slider>
-                <Slide />
-            </Slider>
+            <Slider />
+            
 
             <section className="section">
                 <header className="section-header">
