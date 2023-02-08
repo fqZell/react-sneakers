@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../assets/logo.png";
 import { CartContext, ModalContext } from "../../pages/Root";
+import cartTotal from "../../utils/cartTotal";
 import formatMoney from "../../utils/formatMoney";
 
 const CardButton = () => {
@@ -9,12 +10,12 @@ const CardButton = () => {
     const {toggleModal} = useContext(ModalContext);
     const {cartItems} = useContext(CartContext);
 
-    const cartTotal = cartItems.reduce((prev, current) => prev += current.price, 0);
+    const total = cartTotal(cartItems);
 
     return (
         <button onClick={toggleModal}>
-            <i class="fa-solid fa-cart-shopping"></i>
-            <span>{formatMoney(cartTotal)}</span>
+            <i className="fa-solid fa-cart-shopping"></i>
+            <span>{formatMoney(total)}</span>
         </button>
     )
 }
@@ -36,8 +37,8 @@ const Header = () => {
 
             <nav className="nav">
                 <CardButton />
-                <NavLink to="/favorites"><i class="fa-solid fa-heart"></i></NavLink>
-                <NavLink to="/orders"><i class="fa-solid fa-user"></i></NavLink>
+                <NavLink to="/favorites"><i className="fa-solid fa-heart"></i></NavLink>
+                <NavLink to="/orders"><i className="fa-solid fa-user"></i></NavLink>
 
             </nav>
         </header>

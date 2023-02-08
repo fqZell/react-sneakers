@@ -2,6 +2,9 @@ import { useContext, useEffect } from "react";
 import { CartContext, ModalContext } from "../../pages/Root";
 import { useRef } from "react";
 import CartItem from "../CartItem/CartIem";
+import formatMoney from "../../utils/formatMoney";
+import cartTotal from "../../utils/cartTotal";
+import calculatePercent from "../../utils/calculatePercent";
 
 const CartModal = () => {
 
@@ -10,6 +13,9 @@ const CartModal = () => {
     const cart = useContext(CartContext);
 
     const overlayRef = useRef();
+
+    const total = cartTotal(cart.cartItems);
+    const totalPercent = calculatePercent(total, 5);
 
     const closeModal = (event) => {
         if (event.target === overlayRef.current) {
@@ -45,7 +51,24 @@ const CartModal = () => {
                 </div>
 
                 <footer className="modal-footer">
-                    footer
+                    <div className="total">
+
+                        <div className="row">
+                            <span className="text">Итого:</span>
+                            <div className="underline"></div>
+                            <span className="price">{formatMoney(total)}</span>
+                        </div>
+
+                        <div className="row">
+                            <span className="text">Налог 5%:</span>
+                            <div className="underline"></div>
+                            <span className="price">{formatMoney(totalPercent)}</span>
+                        </div>
+
+                        <button className="button w100">
+                            Оформить заказ
+                        </button>
+                    </div>
                 </footer>
             </div>
         </div>

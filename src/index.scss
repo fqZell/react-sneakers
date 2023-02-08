@@ -484,7 +484,7 @@ main {
 
   right: 0;
 
-  max-width: 25vw;
+  max-width: 385px;
   width: 100%;
 
   background-color: #fff;
@@ -508,8 +508,48 @@ main {
   }
 
   &-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    
+    .total {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
 
+    .row {
+      display: flex;
+      flex-direction: row;
+
+      font-family: 'Inter';
+      font-style: normal;
+      color: #000000;
+      font-size: 16px;
+      line-height: 19px;
+
+      span {
+        min-width: max-content;
+      }
+
+      .underline {
+        width: 100%;
+        border-bottom: 1px dashed #DFDFDF;
+      }
+
+      .text {
+        font-weight: 400;
+      }
+
+      .price {
+        font-weight: 600;
+      }
+    }
   }
+}
+
+.w100 {
+  width: 100%;
 }
 
 .cart-items{
