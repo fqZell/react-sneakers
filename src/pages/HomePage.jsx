@@ -1,14 +1,20 @@
-import { useState } from "react";
-import { HeartItem, PlusIcon, SearchIcon } from "../components/Icons/icons";
+import { useContext, useEffect, useState } from "react";
+import { SearchIcon } from "../components/Icons/icons";
 import Product from "../components/Product/Product";
-import Slide from "../components/Slider/Slide/Slide";
 import Slider from "../components/Slider/Slider";
 import PRODUCTS from "../data/products";
+import { FavoriteContext } from "./Root";
 
 const HomePage = () => {
 
     const [products, setProducts] = useState(PRODUCTS);
     const [query, setQuery] = useState("");
+
+    // const {favorites} = useContext(FavoriteContext);
+
+    // useEffect(() => {
+    //     setProducts((prev) => [...prev, ...favorites]);
+    // }, [favorites.length]);
 
     const filteredProducts = products.filter((item) => item.title.toLowerCase().includes(query.toLowerCase()));
 
